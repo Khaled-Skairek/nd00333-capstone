@@ -17,7 +17,8 @@ subscription_id = '3d1a56d2-7c81-4118-9790-f85d1acf0c77'
 resource_group = 'aml-quickstarts-142329'
 workspace_name = 'quick-starts-ws-142329'
 
-workspace = Workspace(subscription_id, resource_group, workspace_name)
+# workspace = Workspace(subscription_id, resource_group, workspace_name)
+workspace = run.experiment.workspace
 
 my_data = Dataset.get_by_name(workspace, name='Heart-failure-prediction')
 X = my_data.to_pandas_dataframe().dropna()
