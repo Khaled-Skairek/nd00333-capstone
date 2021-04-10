@@ -9,7 +9,22 @@ from tensorflow import keras
 run = Run.get_context()
 
 # Read data from csv
-X = pd.read_csv(r"./../../data/heart_failure_clinical_records_dataset.csv")
+# azureml-core of version 1.0.72 or higher is required
+# azureml-dataprep[pandas] of version 1.1.34 or higher is required
+from azureml.core import Workspace, Dataset
+
+subscription_id = '3d1a56d2-7c81-4118-9790-f85d1acf0c77'
+resource_group = 'aml-quickstarts-142329'
+workspace_name = 'quick-starts-ws-142329'
+
+workspace = Workspace(subscription_id, resource_group, workspace_name)
+
+my_data = Dataset.get_by_name(workspace, name='Heart-failure-prediction')
+X = my_data.to_pandas_dataframe().dropna()
+# X.to_pandas_dataframe()
+
+# X = pd.read_csv(r"./../../data/heart_failure_clinical_records_dataset.csv")
+
 Y = X.pop("DEATH_EVENT")
 
 # Split data into train and test sets.
@@ -57,5 +72,5 @@ def main():
 
     run.log("accuracy", np.float(test_acc))
 
-
-main()
+if __name__ == "__main__":
+    main()
