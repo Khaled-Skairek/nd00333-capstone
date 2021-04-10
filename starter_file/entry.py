@@ -49,7 +49,6 @@ def main():
 
     model.fit(X_train, Y_train, epochs=args.epochs)
 
-    # Then
     test_loss, test_acc = model.evaluate(X_test, Y_test)
     print('Test accuracy:', test_acc)
 
