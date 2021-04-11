@@ -68,8 +68,8 @@ def main():
     test_loss, test_acc = model.evaluate(X_test, Y_test)
     print('Test accuracy:', test_acc)
 
-    model.save(
-        'my_model' + '_LR_' + str(args.learning_rate) + '_epochs_' + str(args.epochs) + '_units_' + str(args.neurons))
+    model.save(run.run_id)
+    # 'my_model' + '_LR_' + str(args.learning_rate) + '_epochs_' + str(args.epochs) + '_units_' + str(args.neurons))
 
     run.log("accuracy", np.float(test_acc))
 

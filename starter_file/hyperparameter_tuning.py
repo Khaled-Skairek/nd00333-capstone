@@ -28,7 +28,6 @@ from azureml.core.compute import ComputeTarget
 
 ws = Workspace.from_config()
 experiment_name = 'Hyper-drive-experiment'
-
 experiment=Experiment(ws, experiment_name)
 
 
