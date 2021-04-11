@@ -163,7 +163,7 @@ print('Version:', model.version)
 print(ws.environments['AzureML-VowpalWabbit-8.8.0'])
 
 
-# In[36]:
+# In[39]:
 
 
 from azureml.core.model import InferenceConfig
@@ -195,7 +195,7 @@ service.wait_for_deployment(show_output=True)
 
 # TODO: In the cell below, send a request to the web service you deployed to test it.
 
-# In[ ]:
+# In[38]:
 
 
 import requests
@@ -203,7 +203,7 @@ import json
 
 # URL for the web service, should be similar to:
 # 'http://8530a665-66f3-49c8-a953-b82a2d312917.eastus.azurecontainer.io/score'
-scoring_uri = ''
+scoring_uri = service.scoring_uri
 # If the service is authenticated, set the key or token
 key = ''
 
@@ -248,7 +248,7 @@ with open("data.json", "w") as _f:
 # Set the content type
 headers = {'Content-Type': 'application/json'}
 # If authentication is enabled, set the authorization header
-headers['Authorization'] = f'Bearer {key}'
+# headers['Authorization'] = f'Bearer {key}'
 
 # Make the request and display the response
 resp = requests.post(scoring_uri, input_data, headers=headers)
