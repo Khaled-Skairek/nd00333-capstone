@@ -27,7 +27,7 @@ ws = Workspace.from_config()
 # choose a name for experiment
 experiment_name = 'AutoML_experiment'
 
-experiment=Experiment(ws, experiment_name)
+experiment = Experiment(ws, experiment_name)
 
 
 # In[6]:
@@ -170,17 +170,10 @@ from azureml.core.model import InferenceConfig
 from azureml.core.webservice import AciWebservice
 from azureml.core import Environment
 
-# environment = Environment('my-environment')
-# environment = ws.environments['AzureML-VowpalWabbit-8.8.0']
-
 environment = Environment.get(workspace=ws, name="AzureML-AutoML")
-
-
 service_name = 'heart-failure-prediction'
-
 inference_config = InferenceConfig(entry_script='score.py', environment=environment)
 aci_config = AciWebservice.deploy_configuration(cpu_cores=1, memory_gb=1)
-
 service = Model.deploy(workspace=ws,
                       name=service_name,
                       models=[model],
