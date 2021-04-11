@@ -1,6 +1,7 @@
 import joblib
 import os
 import json
+import pandas
 
 
 # The init() method is called once, when the web service starts up.
@@ -17,12 +18,11 @@ def init():
 # This will generate a Swagger API document for the web service.
 def run(data):
     try:
-        data = json.loads(data)
-
+        data = json.loads(data)['data']
+        data = pandas.DataFrame.from_dict(data)
         result = model.predict(data)
-
         # You can return any JSON-serializable object.
-        return json.dumps({"DEATH_EVENT":result})
+        return result.tolist()
     except Exception as e:
         error = str(e)
         return error
