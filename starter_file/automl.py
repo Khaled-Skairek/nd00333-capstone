@@ -107,7 +107,7 @@ remote_run = experiment.submit(automl_config)
 RunDetails(remote_run).show() 
 
 
-# In[ ]:
+# In[12]:
 
 
 remote_run.wait_for_completion() 
@@ -119,7 +119,7 @@ remote_run.wait_for_completion()
 # 
 # 
 
-# In[ ]:
+# In[14]:
 
 
 best_run, fitted_model = remote_run.get_output() 
@@ -127,7 +127,7 @@ print (best_run)
 print (fitted_model) 
 
 
-# In[ ]:
+# In[15]:
 
 
 #Save the best model
@@ -140,10 +140,48 @@ joblib.dump(fitted_model, "best_model_auto_ml.model")
 # 
 # TODO: In the cell below, register the model, create an inference config and deploy the model as a web service.
 
-# In[ ]:
+# In[16]:
 
 
+from azureml.core import Model
+from azureml.core.resource_configuration import ResourceConfiguration
 
+model = Model.register(workspace=ws,
+                       model_name='my-autoML-model',                # Name of the registered model in your workspace.
+                       model_path='./best_model_auto_ml.model',     # Local file to upload and register as a model.
+                       model_framework=Model.Framework.SCIKITLEARN, # Framework used to create the model.
+                       resource_configuration=ResourceConfiguration(cpu=1, memory_in_gb=0.5),
+                       description='VotingEnsemble') # ,
+                       # tags={'area': 'diabetes', 'type': 'classification'})
+
+print('Name:', model.name)
+print('Version:', model.version)
+
+
+# In[23]:
+
+
+from azureml.core.model import InferenceConfig
+from azureml.core.webservice import AciWebservice
+from azureml.core import Environment
+
+environment = Environment('my-environment')
+
+service_name = 'heart-failure-prediction'
+
+inference_config = InferenceConfig(entry_script='score.py', environment=environment)
+aci_config = AciWebservice.deploy_configuration(cpu_cores=1, memory_gb=1)
+
+service = Model.deploy(workspace=ws,
+                      name=service_name,
+                      models=[model],
+                      inference_config=inference_config,
+                      deployment_config=aci_config,
+                      overwrite=True)
+
+print(service.get_logs())
+
+service.wait_for_deployment(show_output=True)
 
 
 # TODO: In the cell below, send a request to the web service you deployed to test it.
