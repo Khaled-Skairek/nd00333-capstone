@@ -13,9 +13,6 @@ run = Run.get_context()
 # azureml-dataprep[pandas] of version 1.1.34 or higher is required
 from azureml.core import Workspace, Dataset
 
-subscription_id = '3d1a56d2-7c81-4118-9790-f85d1acf0c77'
-resource_group = 'aml-quickstarts-142329'
-workspace_name = 'quick-starts-ws-142329'
 
 # workspace = Workspace(subscription_id, resource_group, workspace_name)
 workspace = run.experiment.workspace
@@ -68,7 +65,7 @@ def main():
     test_loss, test_acc = model.evaluate(X_test, Y_test)
     print('Test accuracy:', test_acc)
 
-    model.save(run.run_id)
+    model.save(run.get_details()["runId"])
     # 'my_model' + '_LR_' + str(args.learning_rate) + '_epochs_' + str(args.epochs) + '_units_' + str(args.neurons))
 
     run.log("accuracy", np.float(test_acc))
