@@ -66,6 +66,11 @@ screenshots of the `RunDetails`
 
 ## Hyperparameter Tuning
 *TODO*: What kind of model did you choose for this experiment and why? Give an overview of the types of parameters and their ranges used for the hyperparameter search
+I used a deep learning model, since this was not tested in the auto ML experiment, with one hidden layer. The hyper parameters I used to tune using hyperdrive are:  
+learning rate, number of epochs, and the number of neurons in the hidden layer. The range of each parameter was as follow:  
+1. learning_rate: uniform(0.01, 0.3) (continuous)
+2. epochs: choice(4, 8, 16, 32) (discrete)
+3. neurons: choice(48, 60, 72, 84, 96) (discrete)  
 
 
 ### Results
