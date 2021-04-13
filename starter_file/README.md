@@ -53,15 +53,15 @@ The best model was a Voting Ensemble (as we learned in the phase 1) with accurac
 
 What were the parameters of the model?  
 The parameters of the best model can be seen in the image  
-![Best model Auto ML](screenshots/auto_ml_best_model.png)
+![Best model Auto ML](../screenshots/auto_ml_best_model.png)
 
 How could you have improved it?  
 Incearsing the number of estimators could improve the model accuracy, other aspects might be feature engineering; creating new features or dropping some.  
 
 *TODO* Remeber to provide screenshots of the `RunDetails` widget as well as a screenshot of the best model trained with it's parameters.  
 screenshots of the `RunDetails`
-![RunDetails01 Auto ML](screenshots/run_details_01.png)
-![RunDetails02 Auto ML](screenshots/run_details_02.png)
+![RunDetails01 Auto ML](../screenshots/run_details_01.png)
+![RunDetails02 Auto ML](../screenshots/run_details_02.png)
 
 
 ## Hyperparameter Tuning
