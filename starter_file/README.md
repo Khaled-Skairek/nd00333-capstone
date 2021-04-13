@@ -65,9 +65,9 @@ screenshots of the `RunDetails`
 
 
 ## Hyperparameter Tuning
-*TODO*: What kind of model did you choose for this experiment and why? Give an overview of the types of parameters and their ranges used for the hyperparameter search
+*TODO*: What kind of model did you choose for this experiment and why? Give an overview of the types of parameters and their ranges used for the hyperparameter search  
 I used a deep learning model, since this was not tested in the auto ML experiment, with one hidden layer. The hyper parameters I used to tune using hyperdrive are:  
-learning rate, number of epochs, and the number of neurons in the hidden layer. The range of each parameter was as follow:  
+learning rate, number of epochs, and the number of neurons in the hidden layer. The range of each parameter was as follows:  
 1. learning_rate: uniform(0.01, 0.3) (continuous)
 2. epochs: choice(4, 8, 16, 32) (discrete)
 3. neurons: choice(48, 60, 72, 84, 96) (discrete)  
@@ -75,6 +75,8 @@ learning rate, number of epochs, and the number of neurons in the hidden layer. 
 
 ### Results
 *TODO*: What are the results you got with your model? What were the parameters of the model? How could you have improved it?
+The best model I got with the hyperdrive is  
+![Best model Hyperdrive](../screenshots/best_model_hyperparas.png)
 
 *TODO* Remeber to provide screenshots of the `RunDetails` widget as well as a screenshot of the best model trained with it's parameters.
 
