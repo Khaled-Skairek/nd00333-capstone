@@ -53,6 +53,7 @@ The best model was a Voting Ensemble (as we learned in the phase 1) with accurac
 
 What were the parameters of the model?  
 The parameters of the best model can be seen in the image  
+![Best model Auto ML](screenshots/auto_ml_best_model.png)
 
 How could you have improved it?  
 Incearsing the number of estimators could improve the model accuracy, other aspects might be feature engineering; creating new features or dropping some.  
