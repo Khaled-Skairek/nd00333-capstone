@@ -13,6 +13,11 @@ https://www.kaggle.com/andrewmvd/heart-failure-clinical-data
 
 ### Task
 *TODO*: Explain the task you are going to be solving with this dataset and the features you will be using for it.
+We are going to use the heart failure prediction dataset to train a classification model which predicts if an individual is going to die or not. The dataset, in each entry, provides several properties(features) about individual and a binary label which tells if that individual died or not due to heart failure. The features are (as Kaggle describes them):  
+Age  
+Anaemia: Decrease of red blood cells or hemoglobin(boolean)  
+creatinine_phosphokinase: Level of the CPK enzyme in the blood (mcg/L)  
+diabetes: If the patient has diabetes (boolean)  
 
 ### Access
 *TODO*: Explain how you are accessing the data in your workspace.
