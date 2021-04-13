@@ -49,9 +49,19 @@ I uploaded the dataset by uploading the dataset csv file. For convenience I prov
 
 ### Results
 *TODO*: What are the results you got with your automated ML model? What were the parameters of the model? How could you have improved it?
+The best model was a Voting Ensemble (as we learned in the phase 1) with accuracy about 0.92.  
 
+What were the parameters of the model?  
+The parameters of the best model can be seen in the image  
 
-*TODO* Remeber to provide screenshots of the `RunDetails` widget as well as a screenshot of the best model trained with it's parameters.
+How could you have improved it?  
+Incearsing the number of estimators could improve the model accuracy, other aspects might be feature engineering; creating new features or dropping some.  
+
+*TODO* Remeber to provide screenshots of the `RunDetails` widget as well as a screenshot of the best model trained with it's parameters.  
+screenshots of the `RunDetails`
+![RunDetails01 Auto ML](screenshots/run_details_01.png)
+![RunDetails02 Auto ML](screenshots/run_details_02.png)
+
 
 ## Hyperparameter Tuning
 *TODO*: What kind of model did you choose for this experiment and why? Give an overview of the types of parameters and their ranges used for the hyperparameter search
