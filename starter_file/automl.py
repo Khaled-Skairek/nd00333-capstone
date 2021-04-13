@@ -30,7 +30,7 @@ experiment_name = 'AutoML_experiment'
 experiment = Experiment(ws, experiment_name)
 
 
-# In[6]:
+# In[3]:
 
 
 from azureml.core.compute import ComputeTarget, AmlCompute
@@ -56,7 +56,7 @@ except ComputeTargetException:
 cpu_cluster.wait_for_completion(show_output=True)
 
 
-# In[7]:
+# In[4]:
 
 
 dataset = Dataset.get_by_name(ws, name='Heart-failure-prediction') 
@@ -71,7 +71,7 @@ dataset.to_pandas_dataframe()
 # ### AutoMLConfig
 # Since the task is classification, we need to provide the type, the dataset, and the labeled column (DEATH_EVENT). Early stopping is enabled to save time as well.
 
-# In[8]:
+# In[5]:
 
 
 automl_settings = {
@@ -91,7 +91,7 @@ automl_config = AutoMLConfig(task="classification",
                              **automl_settings)
 
 
-# In[9]:
+# In[6]:
 
 
 # Submit your experiment
@@ -101,13 +101,13 @@ remote_run = experiment.submit(automl_config)
 # ## Run Details
 # 
 
-# In[10]:
+# In[7]:
 
 
 RunDetails(remote_run).show() 
 
 
-# In[12]:
+# In[8]:
 
 
 remote_run.wait_for_completion() 
@@ -119,7 +119,7 @@ remote_run.wait_for_completion()
 # 
 # 
 
-# In[14]:
+# In[9]:
 
 
 best_run, fitted_model = remote_run.get_output() 
@@ -127,7 +127,7 @@ print (best_run)
 print (fitted_model) 
 
 
-# In[15]:
+# In[10]:
 
 
 #Save the best model
@@ -140,7 +140,7 @@ joblib.dump(fitted_model, "best_model_auto_ml.model")
 # 
 # TODO: In the cell below, register the model, create an inference config and deploy the model as a web service.
 
-# In[35]:
+# In[11]:
 
 
 from azureml.core import Model
@@ -157,13 +157,7 @@ print('Name:', model.name)
 print('Version:', model.version)
 
 
-# In[31]:
-
-
-print(ws.environments['AzureML-VowpalWabbit-8.8.0'])
-
-
-# In[39]:
+# In[13]:
 
 
 from azureml.core.model import InferenceConfig
@@ -188,7 +182,7 @@ service.wait_for_deployment(show_output=True)
 
 # TODO: In the cell below, send a request to the web service you deployed to test it.
 
-# In[38]:
+# In[46]:
 
 
 import requests
@@ -197,6 +191,7 @@ import json
 # URL for the web service, should be similar to:
 # 'http://8530a665-66f3-49c8-a953-b82a2d312917.eastus.azurecontainer.io/score'
 scoring_uri = service.scoring_uri
+
 # If the service is authenticated, set the key or token
 key = ''
 
@@ -204,18 +199,18 @@ key = ''
 data = {"data":
         [
           {
-            "age": 17,
-            "anaemia": 1,
-            "creatinine_phosphokinase": 600,
+            "age": 53,
+            "anaemia": 0,
+            "creatinine_phosphokinase": 63,
             "diabetes": 1,
-            "ejection_fraction": 30,
+            "ejection_fraction": 60,
             "high_blood_pressure": 0,
-            "platelets": 263000,
-            "serum_creatinine": 1.2,
-            "serum_sodium": 130,
-            "sex": 1,
+            "platelets": 368000,
+            "serum_creatinine": 0.8,
+            "serum_sodium": 137,
+            "sex": 0,
             "smoking": 0,
-            "time": 15,
+            "time": 16,
           },
           {
             "age": 35,
@@ -245,12 +240,16 @@ headers = {'Content-Type': 'application/json'}
 
 # Make the request and display the response
 resp = requests.post(scoring_uri, input_data, headers=headers)
-print(resp.json())
+print("Request: " + str(data['data'][0]))
+print("Response: Death_event = %s"%("True" if resp.json()[0]==1 else "False"))
+print()
+print("Request: " + str(data['data'][1]))
+print("Response: Death_event = %s"%("True" if resp.json()[1]==1 else "False"))
 
 
 # TODO: In the cell below, print the logs of the web service and delete the service
 
-# In[ ]:
+# In[47]:
 
 
 service.get_logs(num_lines=100)

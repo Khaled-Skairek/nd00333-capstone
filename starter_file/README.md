@@ -1,30 +1,68 @@
-*NOTE:* This file is a template that you can use to create the README for your project. The *TODO* comments below will highlight the information you should be sure to include.
+# Heart failure prediction using auto ML and hyper-drive
 
-# Your Project Title Here
-
-*TODO:* Write a short introduction to your project.
+Two powerful features of Azure ML are used to get the best classification model. The classification model gets several properties(features) of an individual as input and predicts if that individual would die due to heart failure or not.
 
 ## Project Set Up and Installation
-*OPTIONAL:* If your project has any special installation steps, this is where you should put it. To turn this project into a professional portfolio project, you are encouraged to explain how to set up this project in AzureML.
+The project uses an external dataset from Kaggle. This dataset has to be registered in Azure Studio under the name "Heart-failure-prediction" so it can be used in jupyter notebook. A copy of the dataset (as csv) is provided in the repo under data folder.
 
 ## Dataset
 
 ### Overview
-*TODO*: Explain about the data you are using and where you got it from.
+The dataset that was used in the project is the heart failure prediction dataset provided from Kaggle. A description of the dataset can be found under the link 
+https://www.kaggle.com/andrewmvd/heart-failure-clinical-data
 
 ### Task
 *TODO*: Explain the task you are going to be solving with this dataset and the features you will be using for it.
+We are going to use the heart failure prediction dataset to train a classification model which predicts if an individual is going to die or not. The dataset, in each entry, provides several properties(features) about individual and a binary label which tells if that individual died or not due to heart failure. The features are (as Kaggle describes them):  
+**Age**  
+**Anaemia**: Decrease of red blood cells or hemoglobin(boolean)  
+**creatinine_phosphokinase**: Level of the CPK enzyme in the blood (mcg/L)  
+**diabetes**: If the patient has diabetes (boolean)  
+**ejection_fraction**: Percentage of blood leaving the heart at each contraction (percentage)  
+**high_blood_pressure**: If the patient has hypertension (boolean)  
+**platelets**: Platelets in the blood (kiloplatelets/mL)  
+**serum_creatinine**: Level of serum creatinine in the blood (mg/dL)  
+**serum_sodium**: Level of serum sodium in the blood (mEq/L)  
+**sex**: Woman or man (binary)  
+**smoking**: If the patient smokes or not (boolean)  
+**time**: Follow-up period (days)  
+**DEATH_EVENT**: If the patient deceased during the follow-up period (boolean)  
 
 ### Access
 *TODO*: Explain how you are accessing the data in your workspace.
+I uploaded the dataset by uploading the dataset csv file. For convenience I provided the csv fle in github repo. The name of the registered dataset shall be "Heart-failure-prediction" since I use this name when accessing the dataset from my jupyter notebook. To access the dataset from the notebook, I used the Dataset module from azure.core package to read the dataset and afterwards converted it to pandas datafram. The dataset is now ready to be used when creating the two experiments, auto ML and Hyperdrive.
 
 ## Automated ML
 *TODO*: Give an overview of the `automl` settings and configuration you used for this experiment
+**Auto ML settings**: Settings which controls the operation of the auto ml experiment  
+1. experiment_timeout_minutes: 20, The experiments shall not run longer than 20 minutes, meaning no new models are tested after 20 minutes
+2. max_concurrent_iterations": 5, The maximum number of parallel runs (models under test)
+3. primary_metric" : 'AUC_weighted', The metric used to evaluate the models and choose the best one
+**Auto ML configuration**: Configuration of the task that will run in the auto ML experiment
+1. task: classification, the task is binary classification
+2. training_data=dataset, the dataset used for training
+3. compute_target=cpu_cluster, the compute target to be used
+4. label_column_name="DEATH_EVENT", The label of dataset entries
+5. path=".", Path where to save the auto ML output data
+6. enable_early_stopping=True, Stop training once the metric does not get improved any further
+7. featurization='auto', 
 
 ### Results
 *TODO*: What are the results you got with your automated ML model? What were the parameters of the model? How could you have improved it?
+The best model was a Voting Ensemble (as we learned in the phase 1) with accuracy about 0.92.  
 
-*TODO* Remeber to provide screenshots of the `RunDetails` widget as well as a screenshot of the best model trained with it's parameters.
+What were the parameters of the model?  
+The parameters of the best model can be seen in the image  
+![Best model Auto ML](screenshots/auto_ml_best_model.png)
+
+How could you have improved it?  
+Incearsing the number of estimators could improve the model accuracy, other aspects might be feature engineering; creating new features or dropping some.  
+
+*TODO* Remeber to provide screenshots of the `RunDetails` widget as well as a screenshot of the best model trained with it's parameters.  
+screenshots of the `RunDetails`
+![RunDetails01 Auto ML](screenshots/run_details_01.png)
+![RunDetails02 Auto ML](screenshots/run_details_02.png)
+
 
 ## Hyperparameter Tuning
 *TODO*: What kind of model did you choose for this experiment and why? Give an overview of the types of parameters and their ranges used for the hyperparameter search
@@ -39,10 +77,11 @@
 *TODO*: Give an overview of the deployed model and instructions on how to query the endpoint with a sample input.
 
 ## Screen Recording
-*TODO* Provide a link to a screen recording of the project in action. Remember that the screencast should demonstrate:
+Here is a link to the screencasting in which I describe the following aspects:
 - A working model
 - Demo of the deployed  model
 - Demo of a sample request sent to the endpoint and its response
 
-## Standout Suggestions
-*TODO (Optional):* This is where you can provide information about any standout suggestions that you have attempted.
+https://youtu.be/BIaTe5ZHJTg
+
+
