@@ -1,8 +1,6 @@
-*NOTE:* This file is a template that you can use to create the README for your project. The *TODO* comments below will highlight the information you should be sure to include.
+# Heart failure prediction using auto ML and hyper-drive
 
-# Your Project Title Here
-
-*TODO:* Write a short introduction to your project.
+Two powerful features of Azure ML are used to get the best classification model. The classification model gets several properties(features) of an individual as input and predicts if that individual would die due to heart failure or not.
 
 ## Project Set Up and Installation
 *OPTIONAL:* If your project has any special installation steps, this is where you should put it. To turn this project into a professional portfolio project, you are encouraged to explain how to set up this project in AzureML.
@@ -39,10 +37,11 @@
 *TODO*: Give an overview of the deployed model and instructions on how to query the endpoint with a sample input.
 
 ## Screen Recording
-*TODO* Provide a link to a screen recording of the project in action. Remember that the screencast should demonstrate:
+Here is a link to the screencasting in which I describe the following aspects:
 - A working model
 - Demo of the deployed  model
 - Demo of a sample request sent to the endpoint and its response
 
-## Standout Suggestions
-*TODO (Optional):* This is where you can provide information about any standout suggestions that you have attempted.
+https://youtu.be/BIaTe5ZHJTg
+
+
