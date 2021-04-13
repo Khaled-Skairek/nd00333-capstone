@@ -79,9 +79,30 @@ The best model I got with the hyperdrive is
 ![Best model Hyperdrive](../screenshots/best_model_hyperparas.png)
 
 *TODO* Remeber to provide screenshots of the `RunDetails` widget as well as a screenshot of the best model trained with it's parameters.
+![RunDetails01 Hyperdrive](../screenshots/run_details_hyper_01.png)
+![RunDetails02 Hyperdrive](../screenshots/run_details_hyper_02.png)
 
 ## Model Deployment
 *TODO*: Give an overview of the deployed model and instructions on how to query the endpoint with a sample input.
+By comparing the results of the auto ML and the hyperdrive, the best model is the one achieved by the auto ML. The best model is then deployed using Azure python SDK. The following image shows the deployed model in the healthy state along with the scoring uri API that can be used to interact with the deployed model  
+![Healthy deployed model](../screenshots/best_model_webservice_healthy.png)
+To query the endpoint one needs to provide json datatype with the required input features as the following example:  
+"age": 17,
+"anaemia": 1,
+"creatinine_phosphokinase": 600,
+"diabetes": 1,
+"ejection_fraction": 30,
+"high_blood_pressure": 0,
+"platelets": 263000,
+"serum_creatinine": 1.2,
+"serum_sodium": 130,
+"sex": 1,
+"smoking": 0,
+"time": 15,  
+![Request response deployed model](../screenshots/request_response_webservice.png)
+
+
+
 
 ## Screen Recording
 Here is a link to the screencasting in which I describe the following aspects:
