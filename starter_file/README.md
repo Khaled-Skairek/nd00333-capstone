@@ -3,12 +3,13 @@
 Two powerful features of Azure ML are used to get the best classification model. The classification model gets several properties(features) of an individual as input and predicts if that individual would die due to heart failure or not.
 
 ## Project Set Up and Installation
-*OPTIONAL:* If your project has any special installation steps, this is where you should put it. To turn this project into a professional portfolio project, you are encouraged to explain how to set up this project in AzureML.
+The project uses an external dataset from Kaggle. This dataset has to be registered in Azure Studio under the name "Heart-failure-prediction" so it can be used in jupyter notebook. A copy of the dataset (as csv) is provided in the repo under data folder.
 
 ## Dataset
 
 ### Overview
-*TODO*: Explain about the data you are using and where you got it from.
+The dataset that was used in the project is the heart failure prediction dataset provided from Kaggle. A description of the dataset can be found under the link 
+https://www.kaggle.com/andrewmvd/heart-failure-clinical-data
 
 ### Task
 *TODO*: Explain the task you are going to be solving with this dataset and the features you will be using for it.
