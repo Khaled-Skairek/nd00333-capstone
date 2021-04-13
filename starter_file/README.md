@@ -53,28 +53,56 @@ The best model was a Voting Ensemble (as we learned in the phase 1) with accurac
 
 What were the parameters of the model?  
 The parameters of the best model can be seen in the image  
-![Best model Auto ML](screenshots/auto_ml_best_model.png)
+![Best model Auto ML](../screenshots/auto_ml_best_model.png)
 
 How could you have improved it?  
 Incearsing the number of estimators could improve the model accuracy, other aspects might be feature engineering; creating new features or dropping some.  
 
 *TODO* Remeber to provide screenshots of the `RunDetails` widget as well as a screenshot of the best model trained with it's parameters.  
 screenshots of the `RunDetails`
-![RunDetails01 Auto ML](screenshots/run_details_01.png)
-![RunDetails02 Auto ML](screenshots/run_details_02.png)
+![RunDetails01 Auto ML](../screenshots/run_details_01.png)
+![RunDetails02 Auto ML](../screenshots/run_details_02.png)
 
 
 ## Hyperparameter Tuning
-*TODO*: What kind of model did you choose for this experiment and why? Give an overview of the types of parameters and their ranges used for the hyperparameter search
+*TODO*: What kind of model did you choose for this experiment and why? Give an overview of the types of parameters and their ranges used for the hyperparameter search  
+I used a deep learning model, since this was not tested in the auto ML experiment, with one hidden layer. The hyper parameters I used to tune using hyperdrive are:  
+learning rate, number of epochs, and the number of neurons in the hidden layer. The range of each parameter was as follows:  
+1. learning_rate: uniform(0.01, 0.3) (continuous)
+2. epochs: choice(4, 8, 16, 32) (discrete)
+3. neurons: choice(48, 60, 72, 84, 96) (discrete)  
 
 
 ### Results
 *TODO*: What are the results you got with your model? What were the parameters of the model? How could you have improved it?
+The best model I got with the hyperdrive is  
+![Best model Hyperdrive](../screenshots/best_model_hyperparas.png)
 
 *TODO* Remeber to provide screenshots of the `RunDetails` widget as well as a screenshot of the best model trained with it's parameters.
+![RunDetails01 Hyperdrive](../screenshots/run_details_hyper_01.png)
+![RunDetails02 Hyperdrive](../screenshots/run_details_hyper_02.png)
 
 ## Model Deployment
 *TODO*: Give an overview of the deployed model and instructions on how to query the endpoint with a sample input.
+By comparing the results of the auto ML and the hyperdrive, the best model is the one achieved by the auto ML. The best model is then deployed using Azure python SDK. The following image shows the deployed model in the healthy state along with the scoring uri API that can be used to interact with the deployed model  
+![Healthy deployed model](../screenshots/best_model_webservice_healthy.png)
+To query the endpoint one needs to provide json datatype with the required input features as the following example:  
+"age": 17,  
+"anaemia": 1,  
+"creatinine_phosphokinase": 600,  
+"diabetes": 1,  
+"ejection_fraction": 30,  
+"high_blood_pressure": 0,  
+"platelets": 263000,  
+"serum_creatinine": 1.2,  
+"serum_sodium": 130,  
+"sex": 1,  
+"smoking": 0,  
+"time": 15,  
+![Request response deployed model](../screenshots/request_response_webservice.png)
+
+
+
 
 ## Screen Recording
 Here is a link to the screencasting in which I describe the following aspects:
