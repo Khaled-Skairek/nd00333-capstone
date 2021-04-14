@@ -1,7 +1,7 @@
 # Heart failure prediction using auto ML and hyper-drive
 
-Two powerful features of Azure ML are used to get the best classification model, auto ML and hyperdrive. Auto ML trains different kinds of models while the hyper drive trains a custom model (neural network was chosen) with different kind of hyper parameters. The best model out of both will be deployed and tested by sending requests and receiving the model prediction.
-The dataset used is the heart failure prediction dataset provided by Kaggle.
+Two powerful features of Azure ML are used to get the best classification model, auto ML and hyperdrive. Auto ML trains different kinds of models while the hyper drive trains a custom model (neural network was chosen) with different kind of hyper parameters. The best model out of both will be deployed and tested by sending requests and receiving the model prediction.  
+The used dataset is the heart failure prediction dataset provided by Kaggle.
 
 ## Project Set Up and Installation
 The project uses an external dataset from Kaggle. This dataset has to be registered in Azure Studio under the name "Heart-failure-prediction" so it can be used in jupyter notebook. A copy of the dataset (as csv) is provided in the repo under data folder.
