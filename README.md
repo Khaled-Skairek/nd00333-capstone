@@ -88,7 +88,7 @@ The best model I got with the hyperdrive is
 ## Model Deployment
 *TODO*: Give an overview of the deployed model and instructions on how to query the endpoint with a sample input.
 By comparing the results of the auto ML and the hyperdrive, the best model is the one achieved by the auto ML. The best model is then deployed using Azure python SDK. The following image shows the deployed model in the healthy state along with the scoring uri API that can be used to interact with the deployed model  
-![Healthy deployed model](../screenshots/best_model_webservice_healthy.png)
+![Healthy deployed model](screenshots/automl_best_model_healthy.png)
 To query the endpoint one needs to provide json datatype with the required input features as the following example:  
 "age": 17,  
 "anaemia": 1,  
@@ -102,7 +102,7 @@ To query the endpoint one needs to provide json datatype with the required input
 "sex": 1,  
 "smoking": 0,  
 "time": 15,  
-![Request response deployed model](../screenshots/request_response_webservice.png)
+![Request response deployed model](screenshots/automl_best_model_request_response.png)
 
 
 
