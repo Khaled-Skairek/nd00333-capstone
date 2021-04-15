@@ -62,7 +62,6 @@ screenshots of the `RunDetails`
 
 
 ## Hyperparameter Tuning
-*TODO*: What kind of model did you choose for this experiment and why? Give an overview of the types of parameters and their ranges used for the hyperparameter search  
 I used a deep learning model, since this was not tested in the auto ML experiment, with one hidden layer. The hyper parameters I used to tune using hyperdrive are:  
 learning rate, number of epochs, and the number of neurons in the hidden layer. The range of each parameter was as follows:  
 1. learning_rate: uniform(0.01, 0.3) (continuous)
@@ -71,17 +70,15 @@ learning rate, number of epochs, and the number of neurons in the hidden layer. 
 
 
 ### Results
-*TODO*: What are the results you got with your model? What were the parameters of the model? How could you have improved it?
 The best model I got with the hyperdrive is  
 ![Best model Hyperdrive](screenshots/hyperdrive_best_model.png)
 
-*TODO* Remeber to provide screenshots of the `RunDetails` widget as well as a screenshot of the best model trained with it's parameters.
+Screenshots of the `RunDetails` widget
 ![RunDetails01 Hyperdrive](screenshots/hyperdrive_run_details_01.png)
 ![RunDetails01 Hyperdrive](screenshots/hyperdrive_run_details_02.png)
 ![RunDetails01 Hyperdrive](screenshots/hyperdrive_run_details_03.png)
 
 ## Model Deployment
-*TODO*: Give an overview of the deployed model and instructions on how to query the endpoint with a sample input.
 By comparing the results of the auto ML and the hyperdrive, the best model is the one achieved by the auto ML. The best model is then deployed using Azure python SDK. The following image shows the deployed model in the healthy state along with the scoring uri API that can be used to interact with the deployed model  
 ![Healthy deployed model](screenshots/automl_best_model_healthy.png)
 To query the endpoint one needs to provide json datatype with the required input features as the following example:  
