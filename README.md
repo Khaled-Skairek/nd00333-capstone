@@ -13,7 +13,6 @@ The dataset that was used in the project is the heart failure prediction dataset
 https://www.kaggle.com/andrewmvd/heart-failure-clinical-data
 
 ### Task
-*TODO*: Explain the task you are going to be solving with this dataset and the features you will be using for it.
 We are going to use the heart failure prediction dataset to train a classification model which predicts if an individual is going to die or not. The dataset, in each entry, provides several properties(features) about individual and a binary label which tells if that individual died or not due to heart failure. The features are (as Kaggle describes them):  
 **Age**  
 **Anaemia**: Decrease of red blood cells or hemoglobin(boolean)  
@@ -30,11 +29,9 @@ We are going to use the heart failure prediction dataset to train a classificati
 **DEATH_EVENT**: If the patient deceased during the follow-up period (boolean)  
 
 ### Access
-*TODO*: Explain how you are accessing the data in your workspace.
 I uploaded the dataset by uploading the dataset csv file. For convenience I provided the csv fle in github repo. The name of the registered dataset shall be "Heart-failure-prediction" since I use this name when accessing the dataset from my jupyter notebook. To access the dataset from the notebook, I used the Dataset module from azure.core package to read the dataset and afterwards converted it to pandas datafram. The dataset is now ready to be used when creating the two experiments, auto ML and Hyperdrive.
 
 ## Automated ML
-*TODO*: Give an overview of the `automl` settings and configuration you used for this experiment
 **Auto ML settings**: Settings which controls the operation of the auto ml experiment  
 1. experiment_timeout_minutes: 20, The experiments shall not run longer than 20 minutes, meaning no new models are tested after 20 minutes
 2. max_concurrent_iterations": 5, The maximum number of parallel runs (models under test)
@@ -49,7 +46,6 @@ I uploaded the dataset by uploading the dataset csv file. For convenience I prov
 7. featurization='auto', 
 
 ### Results
-*TODO*: What are the results you got with your automated ML model? What were the parameters of the model? How could you have improved it?
 The best model was a Voting Ensemble (as we learned in the phase 1) with accuracy about 0.92.  
 
 What were the parameters of the model?  
@@ -60,8 +56,7 @@ The parameters of the best model can be seen in the image
 How could you have improved it?  
 Incearsing the number of estimators could improve the model accuracy, other aspects might be feature engineering; creating new features or dropping some.  
 
-*TODO* Remeber to provide screenshots of the `RunDetails` widget as well as a screenshot of the best model trained with it's parameters.  
-screenshots of the `RunDetails`
+screenshots of the `RunDetails`  
 ![RunDetails01 Auto ML](screenshots/automl_run_details_01.png)
 ![RunDetails02 Auto ML](screenshots/automl_run_details_02.png)
 
