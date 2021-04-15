@@ -62,8 +62,8 @@ Incearsing the number of estimators could improve the model accuracy, other aspe
 
 *TODO* Remeber to provide screenshots of the `RunDetails` widget as well as a screenshot of the best model trained with it's parameters.  
 screenshots of the `RunDetails`
-![RunDetails01 Auto ML](../screenshots/run_details_01.png)
-![RunDetails02 Auto ML](../screenshots/run_details_02.png)
+![RunDetails01 Auto ML](screenshots/automl_run_details_01.png)
+![RunDetails02 Auto ML](screenshots/automl_run_details_02.png)
 
 
 ## Hyperparameter Tuning
@@ -78,11 +78,12 @@ learning rate, number of epochs, and the number of neurons in the hidden layer. 
 ### Results
 *TODO*: What are the results you got with your model? What were the parameters of the model? How could you have improved it?
 The best model I got with the hyperdrive is  
-![Best model Hyperdrive](../screenshots/best_model_hyperparas.png)
+![Best model Hyperdrive](screenshots/hyperdrive_best_model.png)
 
 *TODO* Remeber to provide screenshots of the `RunDetails` widget as well as a screenshot of the best model trained with it's parameters.
-![RunDetails01 Hyperdrive](../screenshots/run_details_hyper_01.png)
-![RunDetails02 Hyperdrive](../screenshots/run_details_hyper_02.png)
+![RunDetails01 Hyperdrive](screenshots/hyperdrive_run_details_01.png)
+![RunDetails01 Hyperdrive](screenshots/hyperdrive_run_details_02.png)
+![RunDetails01 Hyperdrive](screenshots/hyperdrive_run_details_03.png)
 
 ## Model Deployment
 *TODO*: Give an overview of the deployed model and instructions on how to query the endpoint with a sample input.
