@@ -1,0 +1,13 @@
+channels:
+- anaconda
+- conda-forge
+dependencies:
+- python=3.6.2
+- pip:
+  - azureml-dataprep
+  - tensorflow
+  - azureml-defaults
+  - scikit-learn==0.20.3
+  - scipy==1.2.1
+  - joblib==0.13.2
+name: azureml_d769b8473834fb98cee0a7da30460aab
