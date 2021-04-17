@@ -32,11 +32,13 @@ We are going to use the heart failure prediction dataset to train a classificati
 I uploaded the dataset by uploading the dataset csv file. For convenience I provided the csv fle in github repo. The name of the registered dataset shall be "Heart-failure-prediction" since I use this name when accessing the dataset from my jupyter notebook. To access the dataset from the notebook, I used the Dataset module from azure.core package to read the dataset and afterwards converted it to pandas datafram. The dataset is now ready to be used when creating the two experiments, auto ML and Hyperdrive.
 
 ## Automated ML
-**Auto ML settings**: Settings which controls the operation of the auto ml experiment  
+### Auto ML settings
+Settings which controls the operation of the auto ml experiment  
 1. experiment_timeout_minutes: 20, The experiments shall not run longer than 20 minutes, meaning no new models are tested after 20 minutes
 2. max_concurrent_iterations": 5, The maximum number of parallel runs (models under test)
 3. primary_metric" : 'AUC_weighted', The metric used to evaluate the models and choose the best one  
-**Auto ML configuration**: Configuration of the task that will run in the auto ML experiment
+### Auto ML configuration
+Configuration of the task that will run in the auto ML experiment
 1. task: classification, the task is binary classification
 2. training_data=dataset, the dataset used for training
 3. compute_target=cpu_cluster, the compute target to be used
