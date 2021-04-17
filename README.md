@@ -35,7 +35,7 @@ I uploaded the dataset by uploading the dataset csv file. For convenience I prov
 **Auto ML settings**: Settings which controls the operation of the auto ml experiment  
 1. experiment_timeout_minutes: 20, The experiments shall not run longer than 20 minutes, meaning no new models are tested after 20 minutes
 2. max_concurrent_iterations": 5, The maximum number of parallel runs (models under test)
-3. primary_metric" : 'AUC_weighted', The metric used to evaluate the models and choose the best one
+3. primary_metric" : 'AUC_weighted', The metric used to evaluate the models and choose the best one  
 **Auto ML configuration**: Configuration of the task that will run in the auto ML experiment
 1. task: classification, the task is binary classification
 2. training_data=dataset, the dataset used for training
