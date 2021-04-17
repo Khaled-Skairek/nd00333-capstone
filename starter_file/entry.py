@@ -5,6 +5,8 @@ import numpy as np
 import pandas as pd
 import tensorflow as tf
 from tensorflow import keras
+import joblib
+import os
 
 run = Run.get_context()
 
@@ -65,8 +67,12 @@ def main():
     test_loss, test_acc = model.evaluate(X_test, Y_test)
     print('Test accuracy:', test_acc)
 
-    model.save(run.get_details()["runId"])
-    # 'my_model' + '_LR_' + str(args.learning_rate) + '_epochs_' + str(args.epochs) + '_units_' + str(args.neurons))
+    # model.save(run.get_details()["runId"])
+    os.makedirs('./outputs', exist_ok=True)
+    # model_json = model.to_json()
+
+    model.save("./outputs/model")
+    #joblib.dump(model, 'output/model.joblib')
 
     run.log("accuracy", np.float(test_acc))
 
